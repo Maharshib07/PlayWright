@@ -81,7 +81,7 @@ test('if else String Statement', async () => {
     // let name:string = "Raju";
     // var NaMe = "Rakesh";
     if (Name == "Rajesh") {
-        console.log('Name is same' + Name);
+        console.log('Name is same as ' + Name);
     }
     else {
         console.log('Name is different');
@@ -94,3 +94,16 @@ test('for Arrays', async () => {
     }
 });
 
+test('Through index', async () => {
+
+    let city: string = "Vijayawada";
+    console.log(city.indexOf('y'));  //y position
+    console.log(city.charAt(6)); //7th char
+    console.log(city.substring(0, 7)); //1-8 chars subtracted
+    console.log(city.replace('w', 'v')); //Replace w with v
+    console.log(city.toUpperCase()); //Uppercase
+    var sentence = "Vijayawada is a city in Andhra Pradesh";
+    let arrWords: string[] = sentence.split(' '); //Split by space
+    console.log(arrWords);
+    console.log("Length is :" + arrWords.length);
+});
