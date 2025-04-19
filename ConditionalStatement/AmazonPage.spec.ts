@@ -17,9 +17,8 @@ test('Amazonlogin', async ({ page }) => {
 test('Search item', async ({ page }) => {
   await page .goto('https://www.amazon.in/');
   await page.locator("//input[@type='text']").fill('moto edge 50 fusion 5g');
-  const now = new Date();
-  const timestamp = now.toISOString().replace(/[:]/g, '-').slice(0, 19);
-  await page.screenshot({path:'ScreenShots/Screenshot_${timestamp}.jpeg'});
+
+  await page.screenshot({path:'ScreenShots/Screenshot.jpeg'});
   await page.locator("//input[@type='text']").press('Enter');
   await page.waitForTimeout(2000);
   })
