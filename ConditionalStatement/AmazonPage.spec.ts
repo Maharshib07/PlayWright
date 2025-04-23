@@ -21,5 +21,19 @@ test('Search item', async ({ page }) => {
   await page.screenshot({path:'ScreenShots/Screenshot.jpeg'});
   await page.locator("//input[@type='text']").press('Enter');
   await page.waitForTimeout(2000);
-  })
+  });
+
+
+test('test', async ({ page }) => {
+  await page.goto('https://www.amazon.in/');
+  
+  await page.getByRole('searchbox', { name: 'Search Amazon.in' }).fill('Motorolo edge 50 ultra');
+ 
+  await page.getByRole('button', { name: 'Go', exact: true }).click();
+  const page1Promise = page.waitForEvent('popup');
+  await page.getByRole('link', { name: 'Sponsored Ad - Xiaomi 15 (' }).click();
+  const page1 = await page1Promise;
+  await page1.getByRole('button', { name: 'Add to Cart', exact: true }).click();
+  await page1.locator('div').filter({ hasText: 'Added to cart Not added Added' }).nth(3).click();
+});
   
