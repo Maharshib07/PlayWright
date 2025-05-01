@@ -159,3 +159,46 @@ test('for Arrays', async () => {
         console.log(Name[i]);
     }
 });
+
+
+
+function greet(): void //returns void
+{
+    console.log("Rishi");
+}
+
+  test('functions', async()=>{
+    let msg: void = greet();
+    console.log(msg);
+  });
+  
+function addnumbers(x: number, y: number): number  //function returns int
+{
+ return x+y;
+}
+
+test('int function', async()=>{
+    console.log("sum is:" + addnumbers(20,30));
+  });
+
+function GetSTuddetailsBySno(sno:number):string  //function returns string
+{
+    if(sno==30)
+    {
+        return "Rishi";
+    }
+    else if(sno==40)
+    {
+        return "Raju";
+    }
+    else
+    {
+        return "Rakesh";
+    }
+ 
+}
+
+test('calling string function', async()=>{
+    const studName:string=GetSTuddetailsBySno(20);
+    console.log("stud name is:" + studName);
+  });
