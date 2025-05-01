@@ -20,7 +20,7 @@ test('RohitShetty', async ({ }) => {
     // // Textbox locator
     //  const textbox = page.locator('#autocomplete');
     //  await textbox.fill('Rishi');
-    //  await textbox.fill(''); // Clear the input by filling it with an empty string
+    //  await textbox.fill(''); // Clear the input by filling with an empty string
 
     // //Radio button locator
     // const RadioButton = await page.locator("//input[@value='radio1']").click(); // by xpath
@@ -52,7 +52,7 @@ test('RohitShetty', async ({ }) => {
     // //hidden element
     // const hidden = page.locator('input#displayed-text'); // Replace 'selector-for-hidden-element' with the actual selector
     // await hidden.waitFor({ state: 'visible' }) // wait for the element to be visible/hidden
-    // await hidden.fill('Rishi'); // fill the input with text
+    // await hidden.fill('Rishi'); 
     // await hidden.fill('');
     // await page.locator('input#hide-textbox').click(); // click the button to hide the input
     // await hidden.waitFor({ state: 'hidden' }) // wait for the element to be hidden
@@ -60,8 +60,8 @@ test('RohitShetty', async ({ }) => {
     //alert box
     const alrt = page.getByPlaceholder('Enter Your Name'); // by placeholder
     // await alrt.evaluate((element) => element.scrollIntoView({ behavior: 'smooth', block: 'center' }));
-    // await page.waitForTimeout(2000); // wait for 2 seconds
-     await alrt.fill('Maharshi'); // fill the input with text
+    // await page.waitForTimeout(2000); 
+     await alrt.fill('Maharshi'); 
      let alt = page.locator("input[value='Alert']").click();
         await page.on('dialog', async (dialog) => {
             console.log(dialog.message()); // log the alert message
@@ -69,5 +69,4 @@ test('RohitShetty', async ({ }) => {
         });
     
     await page.waitForTimeout(2000);
-
 });
