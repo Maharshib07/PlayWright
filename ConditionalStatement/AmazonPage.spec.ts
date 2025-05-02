@@ -19,6 +19,7 @@ test('Search item', async ({ page }) => {
   await page.locator("//input[@type='text']").fill('moto edge 50 fusion 5g');
 
   await page.screenshot({path:'ScreenShots/Screenshot.jpeg'});
+
   await page.locator("//input[@type='text']").press('Enter');
   await page.waitForTimeout(2000);
   });
@@ -27,6 +28,7 @@ test('Search item', async ({ page }) => {
 test('test', async ({ page }) => {
   await page.goto('https://www.amazon.in/');
   
+ 
   await page.getByRole('searchbox', { name: 'Search Amazon.in' }).fill('Motorolo edge 50 ultra');
  
   await page.getByRole('button', { name: 'Go', exact: true }).click();
