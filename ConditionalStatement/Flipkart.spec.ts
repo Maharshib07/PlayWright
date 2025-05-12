@@ -21,13 +21,13 @@ test.only("booking a phone", async () => {
     await page.fill("//input[@class='Pke_EE']",'Mouse')
     await page.waitForTimeout(4000)
     await page.locator("//a/div[text()='mouse wireless']").click()
-    let product = page.locator("//a[text()='Lenovo 300 /1yr battery life, Ambidextrous,Ergonomic,10...']")
+    let product = page.locator("//a[text()='Lenovo 130 Wireless Optical Mouse  with Bluetooth']")
     await product.scrollIntoViewIfNeeded()
     
     //await page.waitForTimeout(4000);
   const [newTab] = await Promise.all([
     page.waitForEvent('popup'),
-    page.click("//a[text()='Lenovo 300 /1yr battery life, Ambidextrous,Ergonomic,10...']") // Opens product in a new tab
+    page.click("//a[text()='Lenovo 130 Wireless Optical Mouse  with Bluetooth']") // Opens product in a new tab
   ]);
 
   // Step 4: Wait for new tab to load
