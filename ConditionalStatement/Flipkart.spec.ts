@@ -36,7 +36,7 @@ test.only("booking a phone", async () => {
 // Interact with elements in the new tab
 await newTab.locator('//input[@placeholder="Enter Delivery Pincode"]').click();
 await newTab.fill("//input[@placeholder='Enter Delivery Pincode']", '534126');
-await newTab.click("//span[text()='Check']");
+await newTab.click("//span[contains(text(),'Check'])");
 
 });
 
