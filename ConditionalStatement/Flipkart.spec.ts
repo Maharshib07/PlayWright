@@ -1,12 +1,12 @@
-import { test, Browser, Locator, expect} from "@playwright/test";
-import { chromium, firefox, webkit } from "@playwright/test";
+import { test, Locator, expect } from "@playwright/test";
+//import { chromium, firefox, webkit } from "@playwright/test";
 
-test.only("booking a phone", async () => {
-    const browser = await chromium.launch({headless:false, slowMo:900})
-    // const browsers = await firefox.launch()
-    // const browserr = await webkit.launch()
-    const context = await browser.newContext()
-    const page = await context.newPage()
+test.only("booking a phone", async ({ page }) => {
+    //const browser = await chromium.launch({ headless: false, slowMo: 900 });
+    //const browser = await firefox.launch()
+    //const browser = await webkit.launch()
+    //const context = await browser.newContext()
+    //const page = await context.newPage()
 
     await page.goto('https://www.flipkart.com/')
     await expect(page).toHaveURL('https://www.flipkart.com/')

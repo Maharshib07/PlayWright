@@ -1,7 +1,6 @@
 import { test, expect, chromium } from '@playwright/test';
-import path from 'path';
 
-test('Amazonlogin', async ({ page }) => {
+test('Amazonlogin', async ({page}) => {
   await page.goto('https://www.amazon.com/');
   await page.getByRole('link', { name: 'Hello, sign in Account & Lists' }).click();
   await page.getByRole('textbox', { name: 'Email or mobile phone number' }).fill('maharshibadiganti@gmail.com');
@@ -14,8 +13,8 @@ test('Amazonlogin', async ({ page }) => {
   await page.waitForTimeout(2000);
 });
 
-test('Search item', async ({ page }) => {
-  await page .goto('https://www.amazon.in/');
+test('Search item', async ({page }) => {
+  await page.goto('https://www.amazon.in/');
   await page.locator("//input[@type='text']").fill('moto edge 50 fusion 5g');
 
   await page.screenshot({path:'ScreenShots/Screenshot.jpeg'});
