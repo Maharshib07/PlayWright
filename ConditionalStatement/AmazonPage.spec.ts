@@ -1,7 +1,6 @@
-import { test, expect } from '@playwright/test';
-import path from 'path';
+import { test, expect, chromium } from '@playwright/test';
 
-test('Amazonlogin', async ({ page }) => {
+test('Amazonlogin', async ({page}) => {
   await page.goto('https://www.amazon.com/');
   await page.getByRole('link', { name: 'Hello, sign in Account & Lists' }).click();
   await page.getByRole('textbox', { name: 'Email or mobile phone number' }).fill('maharshibadiganti@gmail.com');
@@ -14,8 +13,8 @@ test('Amazonlogin', async ({ page }) => {
   await page.waitForTimeout(2000);
 });
 
-test('Search item', async ({ page }) => {
-  await page .goto('https://www.amazon.in/');
+test('Search item', async ({page }) => {
+  await page.goto('https://www.amazon.in/');
   await page.locator("//input[@type='text']").fill('moto edge 50 fusion 5g');
 
   await page.screenshot({path:'ScreenShots/Screenshot.jpeg'});
@@ -25,19 +24,36 @@ test('Search item', async ({ page }) => {
   });
 
 
-test('test', async ({ page }) => {
-  await page.goto('https://www.amazon.in/');
-  
- 
-  await page.getByRole('searchbox', { name: 'Search Amazon.in' }).fill('Motorolo edge 50 ultra');
- 
-  await page.getByRole('button', { name: 'Go', exact: true }).click();
-  const [page1] = await Promise.all([
-    page.waitForEvent('popup'),
-    page.getByRole('link', { name: 'Sponsored Ad - Xiaomi 15 (' }).click()
-  ]);
-  await page1.getByRole('button', { name: 'Add to Cart', exact: true }).click();
-  await page1.locator('div').filter({ hasText: 'Added to cart Not added Added' }).nth(3).click();
+test ('booking a laptop',async () => {
+  const browser = await chromium.launch({ headless: false });
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
+  // Step 1: Go to Amazon
+  await page.goto('https://www.amazon.in');
+
+  // Step 2: Search for a product
+  await page.fill('#twotabsearchtextbox', 'laptop');
+  await page.press('#twotabsearchtextbox', 'Enter');
+
+  // Step 3: Click a product link that opens a new tab
+  const [newTab] = await Promise.all([
+    page.waitForEvent('popup'),
+    page.locator('a[href*="/dp/"]').first().click() // Opens product in a new tab
+  ]);
+
+  // Step 4: Wait for new tab to load
+  await newTab.waitForLoadState('domcontentloaded');
+
+  // Step 5: Interact in the new tab — for example, enter a delivery pincode
+  const pinInput = newTab.locator("//span/input[@id='add-to-cart-button']");
+  await pinInput.nth(1).click();
+  await expect(newTab.locator("//b[text()='Cart subtotal']")).toBeVisible()
+
+
+//   // Step 6: Click "Check"
+//   await newTab.click("//span[text()='Check']");
+
+ 
 });
   
