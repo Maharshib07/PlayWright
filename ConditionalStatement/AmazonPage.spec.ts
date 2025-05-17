@@ -2,7 +2,7 @@ import { test, expect, chromium } from '@playwright/test';
 
 test('Amazonlogin', async ({page}) => {
   await page.goto('https://www.amazon.com/');
-  await page.getByRole('link', { name: 'Hello, sign in Account & Lists' }).click();
+  await page.locator("#ap_email_login").click();
   await page.getByRole('textbox', { name: 'Email or mobile phone number' }).fill('maharshibadiganti@gmail.com');
   await page.getByRole('button', { name: 'Continue' }).click();
   
