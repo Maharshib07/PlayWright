@@ -24,8 +24,8 @@ steps:
     searchFolder: 'playwright-report'
     testResultsFormat: 'html'
     testResultsFiles: 'index.html'
-    mergeTestResults: true
-    failTaskOnFailedTests: true
+    mergeTestResults:true
+    failTaskOnFailedTests:true
     testRunTitle: 'My End-To-End Tests'
   condition: succeededOrFailed()
 - task: PublishPipelineArtifact@1
