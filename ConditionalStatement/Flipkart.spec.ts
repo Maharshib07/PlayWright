@@ -1,7 +1,7 @@
 import { test, Locator, expect } from "@playwright/test";
 //import { chromium, firefox, webkit } from "@playwright/test";
 
-test.only("booking a phone", async ({ page }) => {
+test("booking a phone", async ({ page }) => {
     //const browser = await chromium.launch({ headless: false, slowMo: 900 });
     //const browser = await firefox.launch()
     //const browser = await webkit.launch()
