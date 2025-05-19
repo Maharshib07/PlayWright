@@ -110,6 +110,7 @@ test('while loop string', async () => {
         console.log('name is :' + names[i]);
         i++;
     }
+    
 });
 test('do while loop', async () => {
     let i: number = 0;
