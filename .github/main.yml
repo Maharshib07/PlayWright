@@ -1,21 +1,36 @@
-on:
-  push:
-    branches:
-    - main
+trigger:
+- main
 
-jobs:
-  e2e-tests:
-    runs-on: windows-latest # or macos-latest, windows-latest, ubuntu-latest
+pool:
+   vmImage: ubuntu-latest
 
-    steps:
-uses: actions/checkout@v2
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18'
+  displayName: 'Install Node.js'
+- script: npm ci
+  displayName: 'npm ci'
+- script: npx playwright install --with-deps
+  displayName: 'Install Playwright browsers'
+- script: npx playwright test
+  displayName: 'Run Playwright tests'
+  env:
+    CI: 'true'
 
-uses: actions/setup-node@v1
-
-uses: microsoft/playwright-github-action@v1
-
-name: Install dependencies
-run: npm install 
-
-name : run tests
-run : npm test
+- task: PublishTestResults@2
+  displayName: 'Publish test results'
+  inputs:
+    searchFolder: 'playwright-report'
+    testResultsFormat: 'html'
+    testResultsFiles: 'index.html'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
+    testRunTitle: 'My End-To-End Tests'
+  condition: succeededOrFailed()
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: playwright-report
+    artifact: playwright-report
+    publishLocation: 'pipeline'
+  condition: succeededOrFailed()
