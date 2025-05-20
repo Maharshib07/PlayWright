@@ -1,7 +1,7 @@
 import { test, Locator, expect } from "@playwright/test";
 //import { chromium, firefox, webkit } from "@playwright/test";
 
-test("booking a phone", async ({ page }) => {
+test("booking a mouse", async ({ page }) => {
     //const browser = await chromium.launch({ headless: false, slowMo: 900 });
     //const browser = await firefox.launch()
     //const browser = await webkit.launch()
@@ -21,13 +21,13 @@ test("booking a phone", async ({ page }) => {
     await page.fill("//input[@class='Pke_EE']",'Mouse')
     await page.waitForTimeout(4000)
     await page.locator("//a/div[text()='mouse wireless']").click()
-    let product = page.locator("//a[text()='Lenovo 130 Wireless Optical Mouse  with Bluetooth']")
+    let product = page.locator("//a[text()='Portronics Vader Pro Wireless Gaming Mouse with 6 Butto...']")
     await product.scrollIntoViewIfNeeded()
     
     //await page.waitForTimeout(4000);
   const [newTab] = await Promise.all([
     page.waitForEvent('popup'),
-    page.click("//a[text()='Lenovo 130 Wireless Optical Mouse  with Bluetooth']") // Opens product in a new tab
+    page.click("//a[text()='Portronics Vader Pro Wireless Gaming Mouse with 6 Butto...']") // Opens product in a new tab
   ]);
 
   // Step 4: Wait for new tab to load
