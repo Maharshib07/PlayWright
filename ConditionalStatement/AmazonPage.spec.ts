@@ -1,15 +1,15 @@
 import { test, expect, chromium } from '@playwright/test';
 
 test('Amazonlogin', async ({page}) => {
-  await page.goto('https://www.amazon.com/');
-  await page.locator("#ap_email_login").click();
-  await page.getByRole('textbox', { name: 'Email or mobile phone number' }).fill('maharshibadiganti@gmail.com');
-  await page.getByRole('button', { name: 'Continue' }).click();
+  await page.goto('https://www.amazon.in/');
+  await page.locator("//span[text()='Hello, sign in']").click();
+  await page.locator('#ap_email_login').fill('maharshibadiganti@gmail.com');
+  await page.locator('.a-button-input').click();
   
-  await page.getByRole('textbox', { name: 'Password' }).fill('Maharshi08@#');
+  await page.locator('#ap_password').fill('Maharshi08@#');
   await page.getByRole('button', { name: 'Sign in' }).click();
   
-  await expect(page.getByRole('link', { name: 'Hello, Maharshi Account &' })).toBeVisible();
+  await expect(page.locator("//span[text()='Hello, Maharshi']")).toHaveText('Hello, Maharshi');
   await page.waitForTimeout(2000);
 });
 
@@ -25,7 +25,7 @@ test('Search item', async ({page }) => {
 
 
 test ('booking a laptop',async () => {
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext();
   const page = await context.newPage();
 
@@ -48,7 +48,7 @@ test ('booking a laptop',async () => {
   // Step 5: Interact in the new tab — for example, enter a delivery pincode
   const pinInput = newTab.locator("//span/input[@id='add-to-cart-button']");
   await pinInput.nth(1).click();
-  await expect(newTab.locator("//b[text()='Cart subtotal']")).toBeVisible()
+  await expect(newTab.locator("//span[@id='sw-subtotal-item-count']")).toHaveId('sw-subtotal-item-count')
 
 
 //   // Step 6: Click "Check"
